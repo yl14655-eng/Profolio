@@ -1,0 +1,73 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Lee. - Curation</title>
+
+    <link rel="icon" type="image/png" href="images/icon.png">
+    <link rel="stylesheet" href="Curation.css">
+</head>
+
+<body>
+
+    <!-- ORIGINAL HEADER -->
+    <nav>
+        <h1><a href="index.html">Lee.</a></h1>
+
+        <div class="links">
+            <a href="About.html">Extracurricular</a>
+            <a href="Projects.html">Projects</a>
+            <a href="Resume.html">Resume</a>
+        </div>
+    </nav>
+
+    <!-- BOOK READER -->
+    <section id="reader">
+
+        <!-- CLOSE / GO BACK -->
+        <button id="close-reader" aria-label="Go back">
+            &times;
+        </button>
+
+        <div class="reader-content">
+
+            <!-- PREVIOUS PAGE -->
+            <button class="page-arrow" id="page-prev"
+                    aria-label="Previous page">
+                &#10094;
+            </button>
+
+            <!-- OPEN BOOK -->
+            <div class="open-book" id="open-book">
+
+                <div class="book-page">
+                    <img id="left-page" alt="Left page">
+                </div>
+
+                <div class="book-page">
+                    <img id="right-page" alt="Right page">
+                </div>
+
+            </div>
+
+            <!-- NEXT PAGE -->
+            <button class="page-arrow" id="page-next"
+                    aria-label="Next page">
+                &#10095;
+            </button>
+
+        </div>
+
+        <div id="page-counter"></div>
+
+    </section>
+
+    <script src="Curation.js"></script>
+    <script src="cursor.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,249 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Lee.</title>
+
+    <link rel="icon" type="image/png" href="images/icon.png">
+    <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+
+    <canvas id="thread-background"></canvas>
+
+    <!-- NAVIGATION -->
+    <nav>
+        <h1><a href="index.html">Lee.</a></h1>
+
+        <div class="links">
+            <a href="About.html">Extracurricular</a>
+            <a href="Projects.html">Projects</a>
+            <a href="Resume.html">Resume</a>
+        </div>
+    </nav>
+
+
+    <main>
+
+        <!-- =========================
+             SECTION A: INTRODUCTION
+        ========================== -->
+
+        <section class="page-section section-a" id="home">
+
+            <div class="intro-text">
+
+
+                <h2>
+                L e e .<br>
+                Y e n W e i
+
+                </h2>
+
+                <p class="intro-description">
+                      Product design, <br>
+                      Industrial design, <br>
+                      Visual communication,<br>
+                      Digital media, <br>
+                      Graphic design <br>
+                </p>
+
+                <a class="text-link" href="#explore">
+                    Works ↓
+                </a>
+
+            </div>
+
+
+            <div class="hero-gallery">
+
+                <div class="organic-frame">
+
+                    <img class="hero-slide active"
+                         src="images/mainpage.png"
+                         alt="To Killer project">
+
+                    <img class="hero-slide"
+                         src="images/cha.png"
+                         alt="Hammerhead project">
+
+                    <img class="hero-slide"
+                         src="images/sleep.png"
+                         alt="Asleep project">
+
+                    <img class="hero-slide"
+                         src="images/donut.png"
+                         alt="PlusCity project">
+
+                    <img class="hero-slide"
+                         src="images/cat.png"
+                         alt="Curation project">
+
+                    <img class="hero-slide"
+                         src="images/car.png"
+                         alt="Bird project">
+
+                    <img class="hero-slide"
+                         src="images/Weather.png"
+                         alt="Bird project">  
+
+                    <img class="hero-slide"
+                         src="images/Mouse.png"
+                         alt="Bird project">
+
+                    <img class="hero-slide"
+                         src="images/clip.png"
+                         alt="Bird project"> 
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             SECTION B: EXPLORE
+        ========================== -->
+
+        <section class="page-section section-b" id="explore">
+
+            <div class="section-heading">
+
+                <h2>Explore.</h2>
+
+            </div>
+
+
+            <div class="explore-groups">
+
+                <!-- ABOUT GROUP -->
+                <a href="About.html" class="explore-card">
+
+                    <div class="image-triptych">
+
+                        <div class="preview-image">
+                            <img src="images/rei.png"
+                                 alt="About preview 1">
+                        </div>
+
+                        <div class="preview-image">
+                            <img src="images/good.png"
+                                 alt="About preview 2">
+                        </div>
+
+                        <div class="preview-image">
+                            <img src="images/murf.jpg"
+                                 alt="About preview 3">
+                        </div>
+
+                    </div>
+
+                    <div class="explore-caption">
+                        <span>Extracurricular</span>
+                        <span>Extracurricular ↗</span>
+                    </div>
+
+                    <p class="explore-description">
+                        Basic designs,
+                        Graphic arts and stop motion.
+                    </p>
+
+                </a>
+
+
+                <!-- PROJECTS GROUP -->
+                <a href="Projects.html" class="explore-card">
+
+                    <div class="image-triptych">
+
+                        <div class="preview-image">
+                            <img src="images/to.png"
+                                 alt="To Killer">
+                        </div>
+
+                        <div class="preview-image">
+                            <img src="images/ham.png"
+                                 alt="PlusCity">
+                        </div>
+
+                        <div class="preview-image">
+                            <img src="images/game.png"
+                                 alt="Asleep">
+                        </div>
+
+                    </div>
+
+                    <div class="explore-caption">
+                        <span>Projects</span>
+                        <span>Projects ↗</span>
+                    </div>
+
+                    <p class="explore-description">
+                        Product design,
+                        Industial design and others.
+                        
+                    </p>
+
+                </a>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             SECTION C: CLOSING
+        ========================== -->
+
+   <section class="page-section section-c" id="closing">
+    <div class="closing-content">
+        <h2>Contact.</h2>
+
+        <p>
+            Lee Yen Wei<br>
+            +1 929 683 6421<br>
+            longlight1998@gmail.com
+        </p>
+    </div>
+</section>
+        </section>
+
+    </main>
+
+
+    <!-- EXISTING STAR CURSOR -->
+    <script src="cursor.js"></script>
+    <script src="threads.js"></script>
+
+
+    <!-- SECTION A IMAGE ROTATION -->
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+
+            const slides = document.querySelectorAll(".hero-slide");
+
+            if (slides.length === 0) return;
+
+            let current = 0;
+
+            setInterval(() => {
+
+                slides[current].classList.remove("active");
+
+                current = (current + 1) % slides.length;
+
+                slides[current].classList.add("active");
+
+            }, 3000);
+
+        });
+    </script>
+
+</body>
+</html>

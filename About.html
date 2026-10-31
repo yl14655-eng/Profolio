@@ -1,0 +1,79 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Lee.</title>
+
+    <link rel="icon" type="image/png" href="images/icon.png">
+    <link rel="stylesheet" href="About.css">
+</head>
+
+<body>
+
+    <!-- ORIGINAL NAVIGATION HEADER -->
+    <nav>
+        <h1><a href="index.html">Lee.</a></h1>
+
+        <div class="links">
+            <a href="About.html">Extracurricular</a>
+            <a href="Projects.html">Projects</a>
+            <a href="Resume.html">Resume</a>
+        </div>
+    </nav>
+
+    <!-- BOOK GALLERY -->
+    <section id="gallery">
+        <div class="bookshelf" id="bookshelf"></div>
+    </section>
+
+    <!-- BOOK READER -->
+    <section id="reader" aria-hidden="true">
+
+        <!-- TRANSPARENT BACKGROUND -->
+        <div class="reader-backdrop" id="reader-backdrop"></div>
+
+        <!-- CLOSE BUTTON -->
+        <button id="close-reader" aria-label="Close book">
+            &times;
+        </button>
+
+        <!-- BOOK AND PAGE ARROWS -->
+        <div class="reader-content">
+
+            <button class="page-arrow" id="page-prev"
+                    aria-label="Previous page">
+                &#10094;
+            </button>
+
+            <div class="open-book" id="open-book">
+
+                <div class="book-page" id="left-container">
+                    <img id="left-page" alt="Left page">
+                </div>
+
+                <div class="book-page" id="right-container">
+                    <img id="right-page" alt="Right page">
+                </div>
+
+            </div>
+
+            <button class="page-arrow" id="page-next"
+                    aria-label="Next page">
+                &#10095;
+            </button>
+
+        </div>
+
+        <div id="page-counter"></div>
+
+    </section>
+
+    <script src="About.js"></script>
+    <script src="cursor.js"></script>
+
+</body>
+</html>

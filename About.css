@@ -1,0 +1,482 @@
+
+/* ======================================
+   GENERAL
+   ====================================== */
+
+:root {
+    --page-bg:rgb(245, 244, 243);
+    --ink: #000;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    min-height: 100%;
+}
+
+body {
+    background: var(--page-bg);
+    color: var(--ink);
+}
+
+
+/* ======================================
+   ORIGINAL HEADER
+   ====================================== */
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: monospace;
+    padding: 20px 60px;
+    font-size: 15px;
+
+    position: relative;
+    z-index: 200;
+}
+
+.links {
+    display: flex;
+    gap: 30px;
+}
+
+nav a {
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+}
+
+
+/* ======================================
+   BOOK GALLERY
+   ====================================== */
+
+#gallery {
+    width: 100%;
+    min-height: calc(100vh - 100px);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: transparent;
+}
+
+.bookshelf {
+    width: 85%;
+    min-height: 70vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 5%;
+    perspective: 1200px;
+}
+
+
+/* INDIVIDUAL BOOK */
+
+.book-cover {
+    width: 30%;
+    max-width: 290px;
+
+    cursor: pointer;
+    border: none;
+    background: transparent;
+    padding: 0;
+
+    opacity: 0.4;
+    transform: scale(1);
+
+    transition:
+        opacity 0.4s ease,
+        transform 0.4s ease;
+
+    position: relative;
+    z-index: 1;
+}
+
+.book-cover img {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-height: 65vh;
+
+    object-fit: contain;
+
+    box-shadow:
+        5px 8px 20px rgba(0, 0, 0, 0.12);
+
+    pointer-events: none;
+}
+
+
+/* SELECTED BOOK */
+
+.book-cover.active {
+    opacity: 1;
+    transform: scale(1.2);
+    z-index: 2;
+}
+
+
+/* HOVER */
+
+.book-cover:hover {
+    opacity: 0.85;
+}
+
+.book-cover.active:hover {
+    opacity: 1;
+}
+
+
+/* ======================================
+   BOOK READER OVERLAY
+   ====================================== */
+
+#reader {
+    position: fixed;
+
+    /* Actual position is updated by JS
+       to match the header height */
+    top: 100px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+
+    transition:
+        opacity 0.35s ease,
+        visibility 0.35s ease;
+
+    z-index: 100;
+}
+
+
+/* READER IS OPEN */
+
+#reader.visible {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+
+/* SEMI-TRANSPARENT BACKGROUND */
+
+.reader-backdrop {
+    position: absolute;
+    inset: 0;
+
+    background:rgb(245, 244, 243);
+
+    z-index: 0;
+}
+
+
+/* ======================================
+   CLOSE BUTTON
+   ====================================== */
+
+#close-reader {
+    position: absolute;
+
+    top: 20px;
+    right: 35px;
+
+    z-index: 5;
+
+    font-size: 40px;
+    font-family: Arial, sans-serif;
+
+    color: black;
+    background: transparent;
+    border: none;
+
+    cursor: pointer;
+    padding: 5px 12px;
+}
+
+#close-reader:hover {
+    opacity: 0.5;
+}
+
+
+/* ======================================
+   READER CONTENT
+   ====================================== */
+
+.reader-content {
+    position: relative;
+    z-index: 2;
+
+    width: 95%;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 15px;
+}
+
+
+/* OPEN BOOK */
+
+.open-book {
+    display: flex;
+
+    width: min(75vw, 1000px);
+    height: min(70vh, 650px);
+
+    position: relative;
+    flex-shrink: 1;
+    min-width: 0;
+
+    background: #ffffff;
+
+    box-shadow:
+        0 12px 30px rgba(0, 0, 0, 0.18);
+}
+
+
+/* INDIVIDUAL PAGES */
+
+.book-page {
+    width: 50%;
+    height: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    overflow: hidden;
+    background: #ffffff;
+}
+
+.book-page:first-child {
+    border-right: 1px solid #ddd;
+}
+
+.book-page img {
+    display: block;
+
+    width: auto;
+    height: auto;
+
+    max-width: 96%;
+    max-height: 96%;
+
+    object-fit: contain;
+}
+
+/* ======================================
+   DOUBLE-PAGE IMAGE
+   ====================================== */
+
+.open-book.double-page .book-page {
+    display: none;
+}
+
+.open-book.double-page {
+    background-color: #ffffff;
+
+    /* Keep the original image proportions */
+    background-size: contain;
+
+    /* Center the image */
+    background-position: center;
+    background-repeat: no-repeat;
+
+    /* Create white space around the image */
+    border: 10px solid #ffffff;
+    box-sizing: border-box;
+}
+
+body::before {
+    content: "";
+
+    position: fixed;
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    z-index: -1;
+    pointer-events: none;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    animation: backgroundLoop 4s step-end infinite;
+}
+
+
+
+/* ======================================
+   PAGE ARROWS
+   ====================================== */
+
+.page-arrow {
+    position: relative;
+    z-index: 5;
+
+    flex-shrink: 0;
+
+    font-size: 32px;
+    color: black;
+
+    background: transparent;
+    border: none;
+
+    cursor: pointer;
+    padding: 15px;
+}
+
+.page-arrow:hover {
+    opacity: 0.4;
+}
+
+.page-arrow:disabled {
+    opacity: 0.15;
+    cursor: default;
+}
+
+
+/* ======================================
+   PAGE COUNTER
+   ====================================== */
+
+#page-counter {
+    position: relative;
+    z-index: 2;
+
+    margin-top: 25px;
+
+    font-family: monospace;
+    font-size: 13px;
+    letter-spacing: 2px;
+
+    color: #555;
+}
+
+
+/* ======================================
+   PAGE TRANSITION
+   ====================================== */
+
+.open-book.turning {
+    animation: pageTurn 0.35s ease;
+}
+
+@keyframes pageTurn {
+    0% {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: 0.85;
+        transform: scale(0.97);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+
+/* ======================================
+   SMALL SCREENS
+   ====================================== */
+
+@media (max-width: 700px) {
+
+    nav {
+        padding: 20px;
+    }
+
+    .links {
+        gap: 12px;
+    }
+
+    .bookshelf {
+        width: 95%;
+        gap: 3%;
+    }
+
+    .book-cover {
+        width: 30%;
+    }
+
+    .reader-content {
+        width: 100%;
+        gap: 2px;
+    }
+
+    .open-book {
+        width: 76vw;
+        height: 55vh;
+    }
+
+    .page-arrow {
+        font-size: 22px;
+        padding: 5px;
+    }
+
+    #close-reader {
+        top: 10px;
+        right: 15px;
+    }
+
+}
+#reader,
+.open-book,
+.book-page,
+.book-page img {
+    filter: none !important;
+    mix-blend-mode: normal !important;
+}
+
+.book-page img {
+    opacity: 1 !important;
+}
+
+/* =====================================
+   STAR CURSOR TRAIL
+   ===================================== */
+
+@media (pointer: fine) {
+
+    html,
+    body,
+    body * {
+        cursor: none !important;
+    }
+
+    #star-cursor-canvas {
+        position: fixed;
+        inset: 0;
+
+        width: 100vw;
+        height: 100vh;
+
+        z-index: 999999;
+        pointer-events: none;
+    }
+}

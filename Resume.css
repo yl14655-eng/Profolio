@@ -1,0 +1,436 @@
+
+/* =====================================
+   GENERAL
+===================================== */
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+
+    background: rgb(245, 244, 243);
+    color: rgb(35, 35, 35);
+
+    font-family: monospace;
+
+    position: relative;
+    isolation: isolate;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+
+/* =====================================
+   NAVIGATION
+===================================== */
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 20px 60px;
+    font-size: 15px;
+
+    position: relative;
+    z-index: 100;
+}
+
+nav h1 {
+    margin: 0;
+    font-size: 2em;
+}
+
+.links {
+    display: flex;
+    gap: 30px;
+}
+
+nav a {
+    color: black;
+    text-decoration: none;
+}
+
+
+/* =====================================
+   MAIN RESUME PAGE
+===================================== */
+
+.resume-page {
+    width: min(1100px, 88%);
+    margin: 50px auto 120px;
+
+    position: relative;
+    z-index: 1;
+}
+
+
+/* =====================================
+   HEADER: NAME AND PORTRAIT
+===================================== */
+
+.resume-header {
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 1fr) 230px;
+
+    align-items: center;
+    gap: 50px;
+
+    padding: 35px 0 55px;
+
+    border-bottom: 1px solid #555;
+}
+
+.resume-identity {
+    text-align: center;
+}
+
+.header-label {
+    font-size: 12px;
+    letter-spacing: 4px;
+    margin: 0 0 35px;
+}
+
+.resume-identity h1 {
+    font-family: "Goudy Old Style", Georgia, serif;
+
+    font-size: clamp(40px, 6vw, 80px);
+    font-weight: 500;
+
+    letter-spacing: 8px;
+    line-height: 1.1;
+
+    margin: 0;
+}
+
+.resume-subtitle {
+    font-size: 13px;
+    letter-spacing: 4px;
+
+    margin: 25px 0 0;
+}
+
+.header-portrait {
+    width: 100%;
+}
+
+.header-portrait img {
+    display: block;
+
+    width: 100%;
+    height: 280px;
+
+    object-fit: cover;
+}
+
+
+/* =====================================
+   TWO-COLUMN LAYOUT
+===================================== */
+
+.resume-layout {
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 35%) minmax(0, 65%);
+
+    align-items: stretch;
+}
+
+
+/* =====================================
+   LEFT SIDEBAR
+===================================== */
+
+.resume-sidebar {
+    background: rgba(220, 220, 220, 0.25);
+
+    padding: 35px 40px 50px 25px;
+
+    min-width: 0;
+}
+
+
+/* =====================================
+   RIGHT CONTENT
+===================================== */
+
+.resume-main {
+    padding: 35px 0 50px 40px;
+
+    min-width: 0;
+}
+
+
+/* =====================================
+   SHARED SECTION STYLING
+===================================== */
+
+.resume-section {
+    padding-bottom: 35px;
+    margin-bottom: 35px;
+
+    border-bottom: 1px dashed #777;
+}
+
+.resume-section:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+}
+
+.resume-section h2 {
+    font-family: monospace;
+
+    font-size: 19px;
+    font-weight: normal;
+
+    letter-spacing: 5px;
+
+    margin: 0 0 28px;
+}
+
+.resume-section p {
+    font-size: 13px;
+    line-height: 1.9;
+
+    margin: 0 0 15px;
+
+    overflow-wrap: anywhere;
+}
+
+
+/* =====================================
+   CONTACT
+===================================== */
+
+.contact-list {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.contact-list p {
+    display: flex;
+    align-items: flex-start;
+
+    gap: 15px;
+    margin: 0;
+}
+
+.contact-icon {
+    display: inline-block;
+
+    width: 20px;
+    flex-shrink: 0;
+
+    font-size: 17px;
+    line-height: 1.5;
+}
+
+
+/* =====================================
+   SKILLS AND SOFTWARE
+===================================== */
+
+.plain-list {
+    list-style: none;
+
+    margin: 0;
+    padding: 0;
+}
+
+.plain-list li {
+    font-size: 13px;
+    line-height: 2.5;
+}
+
+
+/* =====================================
+   LANGUAGES
+===================================== */
+
+.language-list p {
+    font-size: 13px;
+    margin: 0 0 12px;
+}
+
+
+/* =====================================
+   AREAS OF PRACTICE
+===================================== */
+
+.experience-item {
+    margin-bottom: 38px;
+}
+
+.experience-item h3 {
+    font-size: 16px;
+    font-weight: bold;
+
+    margin: 0 0 12px;
+}
+
+.experience-item p {
+    font-size: 13px;
+    line-height: 1.9;
+
+    margin: 0;
+}
+
+
+/* =====================================
+   GENERATIVE THREAD BACKGROUND
+===================================== */
+
+#thread-background {
+    position: fixed;
+    inset: 0;
+
+    width: 100vw;
+    height: 100vh;
+
+    z-index: 0;
+    pointer-events: none;
+
+    display: block;
+}
+
+
+/* =====================================
+   STAR CURSOR
+===================================== */
+
+@media (pointer: fine) {
+
+    html,
+    body,
+    body * {
+        cursor: none !important;
+    }
+
+    #star-cursor-canvas {
+        position: fixed;
+        inset: 0;
+
+        width: 100vw;
+        height: 100vh;
+
+        z-index: 999999;
+        pointer-events: none;
+    }
+}
+
+
+/* =====================================
+   TABLET
+===================================== */
+
+@media (max-width: 900px) {
+
+    nav {
+        padding: 20px 35px;
+    }
+
+    .resume-page {
+        width: 90%;
+        margin-top: 35px;
+    }
+
+    .resume-header {
+        grid-template-columns:
+            minmax(0, 1fr) 180px;
+
+        gap: 25px;
+    }
+
+    .header-portrait img {
+        height: 230px;
+    }
+
+    .resume-sidebar {
+        padding: 30px 25px 40px 15px;
+    }
+
+    .resume-main {
+        padding: 30px 0 40px 25px;
+    }
+}
+
+
+/* =====================================
+   MOBILE
+===================================== */
+
+@media (max-width: 700px) {
+
+    nav {
+        padding: 20px;
+    }
+
+    .links {
+        gap: 12px;
+        font-size: 12px;
+    }
+
+    .resume-page {
+        width: 90%;
+        margin: 25px auto 70px;
+    }
+
+    .resume-header {
+        grid-template-columns: 1fr;
+
+        gap: 30px;
+        padding: 20px 0 40px;
+    }
+
+    .resume-identity h1 {
+        font-size: clamp(36px, 9vw, 60px);
+        letter-spacing: 3px;
+    }
+
+    .resume-subtitle {
+        font-size: 11px;
+        letter-spacing: 2px;
+    }
+
+    .header-portrait {
+        width: 65%;
+        max-width: 260px;
+
+        margin: 0 auto;
+    }
+
+    .header-portrait img {
+        height: auto;
+    }
+
+    .resume-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .resume-sidebar {
+        padding: 30px 25px;
+    }
+
+    .resume-main {
+        padding: 40px 5px;
+    }
+
+    .resume-section h2 {
+        font-size: 17px;
+        letter-spacing: 4px;
+    }
+}

@@ -1,0 +1,280 @@
+
+
+
+/* ======================================
+   GENERAL
+   ====================================== */
+
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    min-height: 100%;
+}
+
+body {
+    background: rgb(245, 244, 243);
+    color: black;
+}
+
+
+/* ======================================
+   ORIGINAL HEADER
+   ====================================== */
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: monospace;
+    padding: 20px 60px;
+    font-size: 15px;
+
+    position: relative;
+    z-index: 200;
+}
+
+.links {
+    display: flex;
+    gap: 30px;
+}
+
+nav a {
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+}
+
+
+/* ======================================
+   BOOK READER
+   ====================================== */
+
+#reader {
+    position: relative;
+
+    width: 100%;
+    min-height: calc(100vh - 100px);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+
+/* ======================================
+   CLOSE BUTTON
+   ====================================== */
+
+#close-reader {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+
+    font-size: 40px;
+    font-family: Arial, sans-serif;
+
+    background: transparent;
+    border: none;
+    color: black;
+
+    cursor: pointer;
+    z-index: 10;
+}
+
+#close-reader:hover {
+    opacity: 0.5;
+}
+
+
+/* ======================================
+   BOOK LAYOUT
+   ====================================== */
+
+.reader-content {
+    width: 95%;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 15px;
+}
+
+.open-book {
+    display: flex;
+
+    width: min(75vw, 1000px);
+    height: min(70vh, 650px);
+
+    position: relative;
+    flex-shrink: 1;
+    min-width: 0;
+
+    background: #ffffff;
+
+    box-shadow:
+        0 12px 30px rgba(0, 0, 0, 0.18);
+}
+
+
+/* ======================================
+   INDIVIDUAL PAGES
+   ====================================== */
+
+.book-page {
+    width: 50%;
+    height: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    overflow: hidden;
+    background: #ffffff;
+}
+
+.book-page:first-child {
+    border-right: 1px solid #ddd;
+}
+
+.book-page img {
+    display: block;
+
+    width: auto;
+    height: auto;
+
+    max-width: 98%;
+    max-height: 98%;
+
+    object-fit: contain;
+}
+
+
+/* ======================================
+   HORIZONTAL DOUBLE-PAGE IMAGES
+   ====================================== */
+
+.open-book.double-page .book-page {
+    display: none;
+}
+
+.open-book.double-page {
+    background-color: #ffffff;
+
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    border: 10px solid #ffffff;
+    box-sizing: border-box;
+}
+
+
+/* ======================================
+   PAGE ARROWS
+   ====================================== */
+
+.page-arrow {
+    position: relative;
+    z-index: 5;
+
+    flex-shrink: 0;
+
+    font-size: 32px;
+    color: black;
+
+    background: transparent;
+    border: none;
+
+    cursor: pointer;
+    padding: 15px;
+}
+
+.page-arrow:hover {
+    opacity: 0.4;
+}
+
+.page-arrow:disabled {
+    opacity: 0.15;
+    cursor: default;
+}
+
+
+/* ======================================
+   PAGE COUNTER
+   ====================================== */
+
+#page-counter {
+    margin-top: 25px;
+
+    font-family: monospace;
+    font-size: 13px;
+    letter-spacing: 2px;
+
+    color: #555;
+}
+
+
+
+/* ======================================
+   SMALL SCREENS
+   ====================================== */
+
+@media (max-width: 700px) {
+
+    nav {
+        padding: 20px;
+    }
+
+    .links {
+        gap: 12px;
+    }
+
+    .reader-content {
+        width: 100%;
+        gap: 2px;
+    }
+
+    .open-book {
+        width: 76vw;
+        height: 55vh;
+    }
+
+    .page-arrow {
+        font-size: 22px;
+        padding: 5px;
+    }
+
+    #close-reader {
+        top: 10px;
+        right: 15px;
+    }
+}
+
+/* =====================================
+   STAR CURSOR TRAIL
+   ===================================== */
+
+@media (pointer: fine) {
+
+    html,
+    body,
+    body * {
+        cursor: none !important;
+    }
+
+    #star-cursor-canvas {
+        position: fixed;
+        inset: 0;
+
+        width: 100vw;
+        height: 100vh;
+
+        z-index: 999999;
+        pointer-events: none;
+    }
+}

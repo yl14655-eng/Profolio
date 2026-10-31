@@ -1,0 +1,551 @@
+
+/* =====================================
+   GENERAL
+===================================== */
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+
+    background-color:rgb(245, 244, 243);
+    color: #000;
+
+    position: relative;
+    isolation: isolate;
+
+    font-family: monospace;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+
+/* =====================================
+   ANIMATED BACKGROUND
+===================================== */
+
+body::before {
+    
+    content: "";
+
+    position: fixed;
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    z-index: -1;
+    pointer-events: none;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    animation: backgroundLoop 4s step-end infinite;
+}
+
+
+
+
+/* =====================================
+   NAVIGATION
+===================================== */
+
+nav {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    z-index: 100;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 20px 60px;
+    font-size: 15px;
+}
+
+
+.links {
+    display: flex;
+    gap: 30px;
+}
+
+nav a {
+    color: #000;
+    text-decoration: none;
+}
+
+
+/* =====================================
+   ALL THREE SECTIONS
+===================================== */
+
+.page-section {
+    position: relative;
+
+    width: 100%;
+    min-height: 100vh;
+    min-height: 100svh;
+
+    padding: 110px 8% 70px;
+}
+
+
+/* =====================================
+   SECTION A: INTRODUCTION
+===================================== */
+
+.section-a {
+    display: grid;
+    grid-template-columns: 40% 60%;
+    align-items: center;
+}
+
+.intro-text {
+    position: relative;
+    z-index: 2;
+    left: 10%;
+    top: 10%;
+}
+
+
+.intro-text h2 {
+    font-family: Goudy Old Style;
+    font-size: clamp(30px, 7vw, 60px);
+    font-weight: 500;
+    line-height: 0.95;
+
+    letter-spacing: -5px;
+
+    margin: 0 0 50px;
+
+     position: relative;
+    top: -10px;   
+    left: 12%;
+}
+
+.intro-description {
+
+    position: relative;
+    top: -10px;   
+    left: 15%;  
+
+    font-size: 13px;
+    line-height: 1.9;
+}
+
+.text-link {
+    
+    display: inline-block;
+
+    font-size: 13px;
+    letter-spacing: 1px;
+
+    padding-bottom: 8px;
+    border-bottom: 1px solid black;
+    position: relative;   
+    left: 15%; 
+    top: 0px; 
+
+    transition: transform 0.3s ease;
+}
+
+.text-link:hover {
+    transform: translateX(8px);
+}
+
+
+/* =====================================
+   SECTION A: ORGANIC IMAGE
+===================================== */
+
+.hero-gallery {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+     top: 10%;
+    width: 100%;
+    min-width: 0;
+    padding: 0;
+}
+
+
+.organic-frame {
+    position: relative;
+     top: 50px; /* Moves the picture downward */
+     left: -10%; 
+    width: 100%;
+    max-width: none;
+    aspect-ratio: 1 / 0.7;
+    flex-shrink: 1;
+
+    overflow: hidden;
+
+    animation: morphShape 12s ease-in-out infinite alternate;
+}
+
+.hero-slide {
+    position: absolute;
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    opacity: 0;
+    transition: opacity 1.2s ease;
+}
+
+.hero-slide.active {
+    opacity: 1;
+}
+
+@keyframes morphShape {
+    0% {
+      border-radius: 63% 53% 90% 53% / 91% 30% 93% 59%;
+    }
+
+    50% {
+       border-radius: 63% 54% 65% 53% / 57% 63% 69% 85%;
+    }
+
+    100% {
+        border-radius: 37% 47% 65% 43% / 35% 37% 52% 65%;
+    }
+}
+
+/* =====================================
+   SECTION B: EXPLORE
+===================================== */
+
+.section-b {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.section-heading {
+       position: relative;
+
+    top: -50px;  /* Up/down */
+    left: 9%;    /* Left/right */
+}
+
+.section-heading h2 {
+    font-family: Goudy Old Style;
+    font-size: clamp(30px, 5vw, 50px);
+    font-weight: 500;
+    letter-spacing: 7px;
+
+    margin: 0;
+}
+
+.explore-groups {
+    display: flex;
+    flex-direction: column;
+    gap: 35px;
+
+    width: min(100%, 820px);
+    margin: 0 auto;
+}
+
+.explore-card {
+    display: block;
+    width: 100%;
+
+    transition: transform 0.35s ease;
+}
+
+.explore-card:hover {
+    transform: translateY(-5px);
+}
+
+.image-triptych {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+
+    gap: 10px;
+}
+
+.preview-image {
+    overflow: hidden;
+    aspect-ratio: 1 / 1;
+
+    background-color: #aaa;
+}
+
+.preview-image img {
+    width: 100%;
+    height: 100%;
+
+    display: block;
+    object-fit: cover;
+
+    transition: transform 0.6s ease;
+}
+
+.explore-card:hover img {
+    transform: scale(1.06);
+}
+
+.explore-caption {
+    display: grid;
+    align-items: center;
+
+    gap: 0;
+
+    position: relative;
+    top: 0;
+    left: 1%;
+
+    margin-top: 12px;
+
+    font-size: 15px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.explore-description {
+    margin: 7px 0 0;
+    position: relative;
+    top: -5px;
+    left: 1%;
+    font-size: 12px;
+    line-height: 1.6;
+}
+.explore-card:nth-child(1) .explore-caption {
+    display: grid;
+    grid-template-columns: 80% minmax(0, 1fr);
+    gap: 0;
+}
+
+/* PROJECTS */
+.explore-card:nth-child(2) .explore-caption {
+    display: grid;
+    grid-template-columns: 88% minmax(0, 1fr);
+    gap: 0;
+}
+
+/* =====================================
+   SECTION C: CLOSING
+===================================== */
+
+.section-c {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+       position: relative;
+
+    top: -100px;  /* Up/down */
+
+    text-align: center;
+}
+
+.closing-content {
+    width: 100%;
+    max-width: 700px;
+    min-width: 0;
+    box-sizing: border-box;
+}
+
+
+.closing-content h2 {
+       font-family: Goudy Old Style;
+    font-size: clamp(30px, 5vw, 50px);
+    font-weight: 500;
+
+    line-height: 1.1;
+    letter-spacing: 7px;
+
+    margin: 0 0 40px;
+
+    overflow-wrap: anywhere;
+}
+
+.closing-content > p:last-child {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+       position: relative;
+
+    top: -10px;  /* Up/down */
+
+    text-align: center;
+    max-width: 520px;
+
+    margin: auto;
+    letter-spacing: 1px;
+    font-size: 15px;
+    line-height: 2;
+}
+
+
+/* =====================================
+   CUSTOM STAR CURSOR
+===================================== */
+
+@media (pointer: fine) {
+    html,
+    body,
+    body * {
+        cursor: none !important;
+    }
+
+    #star-cursor-canvas {
+        position: fixed;
+        inset: 0;
+
+        width: 100vw;
+        height: 100vh;
+
+        z-index: 999999;
+        pointer-events: none;
+    }
+}
+
+
+/* =====================================
+   RESPONSIVE DESIGN
+===================================== */
+
+@media (max-width: 768px) {
+
+    nav {
+        padding: 22px 6%;
+    }
+
+    .links {
+        gap: 15px;
+        font-size: 12px;
+    }
+
+    .page-section {
+        padding: 115px 7% 65px;
+    }
+
+    .section-a {
+        grid-template-columns: 1fr;
+        gap: 35px;
+
+        align-content: center;
+    }
+
+    .intro-text h2 {
+        font-size: clamp(52px, 12vw, 85px);
+        letter-spacing: -3px;
+    }
+
+    .hero-gallery {
+        width: 100%;
+    }
+
+    .organic-frame {
+        width: min(100%, 420px);
+    }
+
+    .section-b {
+        justify-content: center;
+    }
+
+    .section-heading {
+        margin-bottom: 30px;
+    }
+
+    .explore-groups {
+        gap: 35px;
+    }
+
+    .image-triptych {
+        gap: 5px;
+    }
+
+    .preview-image {
+        aspect-ratio: 1 / 1;
+    }
+
+    .closing-content h2 {
+        letter-spacing: -2px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    .organic-frame {
+        animation: none;
+    }
+
+    .hero-slide {
+        transition: none;
+    }
+}
+
+@media (max-width: 700px) {
+    .section-a {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 35px;
+    }
+
+    .intro-text {
+        width: 100%;
+        left: 0;
+    }
+
+    .hero-gallery {
+        width: 100%;
+    }
+
+    .organic-frame {
+        width: 75%;
+        max-width: none;
+    }
+}
+
+/* =====================================
+   GENERATIVE THREAD BACKGROUND
+===================================== */
+
+#thread-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    width: 100vw;
+    height: 100vh;
+
+    z-index: 0;
+    pointer-events: none;
+
+    display: block;
+}
+
+/* Keep all content above the threads */
+.page-section {
+    position: relative;
+    z-index: 1;
+}
+
+/* Keep navigation above everything */
+nav {
+    z-index: 100;
+}

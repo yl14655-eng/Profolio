@@ -1,0 +1,71 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Lee. - Bird Game</title>
+
+    <link rel="stylesheet" href="Bird.css">
+    <link rel="stylesheet" href="Background.css">
+
+    <!-- p5.js library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.11.10/p5.min.js"></script>
+</head>
+
+<body>
+
+    <!-- NAVIGATION BAR -->
+    <nav>
+        <h1><a href="index.html">Lee.</a></h1>
+
+        <div class="links">
+            <a href="About.html">Extracurricular</a>
+            <a href="Projects.html">Projects</a>
+            <a href="Resume.html">Resume</a>
+        </div>
+    </nav>
+
+    <!-- BOOK READER -->
+    <section id="reader">
+
+        <!-- CLOSE BUTTON -->
+        <button id="close-reader" aria-label="Go back">
+            &times;
+        </button>
+
+        <div class="reader-content">
+
+            <!-- OPEN BOOK -->
+            <div class="open-book game-book">
+
+                <!-- GAME CANVAS -->
+                <div id="game-container"></div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- GAME CODE -->
+    <script src="Bird.js"></script>
+
+    <!-- CLOSE BUTTON FUNCTION -->
+    <script>
+        document.getElementById("close-reader")
+            .addEventListener("click", () => {
+
+                if (window.history.length > 1) {
+                    window.history.back();
+                } else {
+                    window.location.href = "About.html";
+                }
+
+            });
+    </script>
+<script src="cursor.js"></script>
+</body>
+</html>

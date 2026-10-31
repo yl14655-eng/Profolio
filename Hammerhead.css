@@ -1,0 +1,128 @@
+
+
+nav{
+
+    
+    display:flex;
+
+      justify-content:space-between;
+      align-items: center;
+      font-family:monospace;
+      padding: 20px 60px;
+      font-size:15px;
+
+
+}
+/* allingment of text */
+
+.links{
+
+    display:flex;
+
+    gap:30px;
+
+}
+ /* gap of text */
+
+nav a{
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+}
+ /* color of text */
+
+ /* above is for the links of header */
+
+ body{
+
+    background:rgb(245, 244, 243);
+    margin:0;
+    padding:0;
+
+}
+
+.hero{
+
+    position:relative;
+    width:100%;
+    height:100vh;
+
+}
+
+
+/* =========================
+   PICTURE GROUP
+========================= */
+
+.picture-group{
+
+    position:absolute;
+
+    width:100%;
+    height:100%;
+
+    left:0;
+    top:0;
+}
+
+
+.ToKiller,
+.ToKiller2{
+    width:100%;
+    height:auto;
+    display:block;
+}
+
+
+/* =========================
+   ANIMATION
+========================= */
+
+
+.picture-group{
+
+    opacity:0;
+
+    animation:fadeIn 1.5s forwards;
+
+}
+
+
+@keyframes fadeIn{
+
+    from{
+
+        opacity:0;
+
+    }
+
+    to{
+
+        opacity:1;
+
+    }
+
+}
+
+/* =====================================
+   STAR CURSOR TRAIL
+   ===================================== */
+
+@media (pointer: fine) {
+
+    html,
+    body,
+    body * {
+        cursor: none !important;
+    }
+
+    #star-cursor-canvas {
+        position: fixed;
+        inset: 0;
+
+        width: 100vw;
+        height: 100vh;
+
+        z-index: 999999;
+        pointer-events: none;
+    }
+}

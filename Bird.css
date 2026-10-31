@@ -1,0 +1,193 @@
+
+/* ======================================
+   GENERAL
+   ====================================== */
+
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    min-height: 100%;
+}
+
+body {
+    background:rgb(245, 244, 243);
+    color: black;
+}
+
+
+/* ======================================
+   NAVIGATION BAR
+   ====================================== */
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    font-family: monospace;
+    padding: 20px 60px;
+    font-size: 15px;
+
+    position: relative;
+    z-index: 200;
+}
+
+.links {
+    display: flex;
+    gap: 30px;
+}
+
+nav a {
+    color: black;
+    text-decoration: none;
+}
+
+
+/* ======================================
+   READER
+   ====================================== */
+
+#reader {
+    position: relative;
+
+    width: 100%;
+    min-height: calc(100vh - 100px);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+
+/* ======================================
+   CLOSE BUTTON
+   ====================================== */
+
+#close-reader {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+
+    font-size: 40px;
+    font-family: Arial, sans-serif;
+
+    background: transparent;
+    border: none;
+    color: black;
+
+    cursor: pointer;
+    z-index: 10;
+}
+
+#close-reader:hover {
+    opacity: 0.5;
+}
+
+
+/* ======================================
+   BOOK LAYOUT
+   ====================================== */
+
+.reader-content {
+    width: 95%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.open-book {
+    display: flex;
+
+    width: min(75vw, 1000px);
+    height: min(70vh, 650px);
+
+    position: relative;
+    min-width: 0;
+
+    background: #000000;
+
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.18);
+}
+
+
+/* ======================================
+   GAME CONTAINER
+   ====================================== */
+
+.game-book {
+    padding: 10px;
+    background: #ffffff;
+}
+
+#game-container {
+    width: 100%;
+    height: 100%;
+
+    flex: 1;
+    min-width: 0;
+    min-height: 0;
+
+    background: black;
+    overflow: hidden;
+}
+
+#game-container canvas {
+    display: block;
+}
+
+
+/* ======================================
+   MOBILE
+   ====================================== */
+
+@media (max-width: 700px) {
+
+    nav {
+        padding: 20px;
+    }
+
+    .links {
+        gap: 12px;
+    }
+
+    .open-book {
+        width: 85vw;
+        height: 55vh;
+    }
+
+    #close-reader {
+        top: 10px;
+        right: 15px;
+    }
+
+}
+
+/* =====================================
+   STAR CURSOR TRAIL
+   ===================================== */
+
+@media (pointer: fine) {
+
+    html,
+    body,
+    body * {
+        cursor: none !important;
+    }
+
+    #star-cursor-canvas {
+        position: fixed;
+        inset: 0;
+
+        width: 100vw;
+        height: 100vh;
+
+        z-index: 999999;
+        pointer-events: none;
+    }
+}
